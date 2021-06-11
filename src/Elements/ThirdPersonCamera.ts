@@ -2,7 +2,7 @@ import * as THREE from "three";
 
 export default class ThirdPersonCamera extends THREE.PerspectiveCamera {
   public xOffset: number = 0;
-  public yOffset: number = 1;
+  public yOffset: number = 3;
   public zOffset: number = 0;
 
   constructor() {

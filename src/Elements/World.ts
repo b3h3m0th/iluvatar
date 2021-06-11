@@ -52,15 +52,17 @@ export default class World {
       this.hero.velocity += (this.hero.currentSpeed - this.hero.velocity) * 0.3;
       this.hero.translateZ(this.hero.velocity);
 
-      if (this.hero.keys.a) this.hero.rotateY(0.05);
-      else if (this.hero.keys.d) this.hero.rotateY(-0.05);
+      if (this.hero.keys.a) this.hero.rotateY(this.hero.rotationSpeed);
+      else if (this.hero.keys.d) this.hero.rotateY(-this.hero.rotationSpeed);
+
+      if (this.hero.keys.space) this.hero.rotateX(-this.hero.rotationSpeed);
+      else if (this.hero.keys.shift) this.hero.rotateX(this.hero.rotationSpeed);
 
       this.hero.a.lerp(this.hero.position, 0.4);
       this.hero.b.copy(this.hero.goal.position);
 
       this.hero.dir.copy(this.hero.a).sub(this.hero.b).normalize();
-      const dis =
-        this.hero.a.distanceTo(this.hero.b) - this.hero.coronaSafetyDistance;
+      const dis = this.hero.a.distanceTo(this.hero.b) - this.hero.cameraOffset;
       this.hero.goal.position.addScaledVector(this.hero.dir, dis);
 
       this.thirdPersonCamera.lookAt(this.hero.position);
