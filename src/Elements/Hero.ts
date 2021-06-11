@@ -6,6 +6,8 @@ export type MovementKeys = {
   s: boolean;
   d: boolean;
   w: boolean;
+  q: boolean;
+  e: boolean;
   space: boolean;
   shift: boolean;
 };
@@ -27,6 +29,8 @@ export default class Hero extends THREE.Mesh {
     s: false,
     d: false,
     w: false,
+    q: false,
+    e: false,
     space: false,
     shift: false,
   };
@@ -49,7 +53,7 @@ export default class Hero extends THREE.Mesh {
   private _addKeydownHandler(): void {
     document.body.addEventListener("keydown", (e: KeyboardEvent) => {
       const key: string = e.code.replace("Key", "").toLowerCase();
-      if (e.shiftKey) this.keys["shift"] = true;
+      this.keys["shift"] = e.shiftKey;
       if (this.keys[key as keyof MovementKeys] !== undefined)
         this.keys[key as keyof MovementKeys] = true;
     });
@@ -58,7 +62,7 @@ export default class Hero extends THREE.Mesh {
   private _addKeyupHandler(): void {
     document.body.addEventListener("keyup", (e: KeyboardEvent) => {
       const key = e.code.replace("Key", "").toLowerCase();
-      if (e.shiftKey) this.keys["shift"] = false;
+      this.keys["shift"] = e.shiftKey;
       if (this.keys[key as keyof MovementKeys] !== undefined)
         this.keys[key as keyof MovementKeys] = false;
     });

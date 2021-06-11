@@ -58,6 +58,9 @@ export default class World {
       if (this.hero.keys.space) this.hero.rotateX(-this.hero.rotationSpeed);
       else if (this.hero.keys.shift) this.hero.rotateX(this.hero.rotationSpeed);
 
+      if (this.hero.keys.e) this.hero.rotateZ(this.hero.rotationSpeed);
+      else if (this.hero.keys.q) this.hero.rotateZ(-this.hero.rotationSpeed);
+
       this.hero.a.lerp(this.hero.position, 0.4);
       this.hero.b.copy(this.hero.goal.position);
 
