@@ -5,13 +5,10 @@ import Hero from "./Hero";
 import OrbitControls from "./OrbitControls";
 import Renderer from "./Renderer";
 import Scene from "./Scene";
-import Skybox from "./SkyBox";
 
 export default class World {
   public scene: Scene = new Scene();
-  public thirdPersonCamera: ThirdPersonCamera = new ThirdPersonCamera(
-    this.scene
-  );
+  public thirdPersonCamera: ThirdPersonCamera = new ThirdPersonCamera();
   public hero: Hero = new Hero(this.thirdPersonCamera);
   public renderer: Renderer = new Renderer();
   public pointLight: THREE.PointLight = new THREE.PointLight(0xffffff, 1.3);
@@ -28,7 +25,6 @@ export default class World {
     new THREE.PointLightHelper(this.pointLight);
 
   public init(): void {
-    this.scene.background = new Skybox();
     this.pointLight.position.set(40, 30, 0);
     this.scene.add(
       this._gridHelper,

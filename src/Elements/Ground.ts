@@ -3,10 +3,11 @@ import * as THREE from "three";
 export default class Ground extends THREE.Mesh {
   constructor() {
     super(
-      new THREE.BoxGeometry(20, 20, 2),
+      new THREE.BoxGeometry(50, 50, 2),
       new THREE.MeshStandardMaterial({
-        color: 0xeb4034,
         side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0,
       })
     );
 

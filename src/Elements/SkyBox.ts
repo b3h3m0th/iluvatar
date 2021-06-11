@@ -4,28 +4,21 @@ export default class Skybox extends THREE.CubeTexture {
   public static loader: THREE.CubeTextureLoader = new THREE.CubeTextureLoader();
   public static texture: THREE.CubeTexture;
 
-  private static _imagePrefix: string = "skybox";
+  private static _imagePrefix: string = "skybox_";
+  private static _fileExtension: string = ".png";
 
   constructor() {
-    super([
-      `../assets/skyboxes/${Skybox._imagePrefix}/back`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/down`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/front`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/left`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/right`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/up`,
-    ]);
-    Skybox.loader.load([
-      `../assets/skyboxes/${Skybox._imagePrefix}/back`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/down`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/front`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/left`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/right`,
-      `../assets/skyboxes/${Skybox._imagePrefix}/up`,
-    ]);
+    super();
   }
 
   public static apply(): THREE.CubeTexture {
-    return Skybox.texture;
+    return Skybox.loader.load([
+      `./assets/skyboxes/space/${Skybox._imagePrefix}left${Skybox._fileExtension}`,
+      `./assets/skyboxes/space/${Skybox._imagePrefix}right${Skybox._fileExtension}`,
+      `./assets/skyboxes/space/${Skybox._imagePrefix}up${Skybox._fileExtension}`,
+      `./assets/skyboxes/space/${Skybox._imagePrefix}down${Skybox._fileExtension}`,
+      `./assets/skyboxes/space/${Skybox._imagePrefix}front${Skybox._fileExtension}`,
+      `./assets/skyboxes/space/${Skybox._imagePrefix}back${Skybox._fileExtension}`,
+    ]);
   }
 }
