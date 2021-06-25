@@ -30,7 +30,8 @@ export default class World {
       this._gridHelper,
       this._pointLightHelper,
       this.pointLight,
-      this.axesHelper
+      this.axesHelper,
+      this.ambientLight
     );
 
     this._addWindowResizeHandler();

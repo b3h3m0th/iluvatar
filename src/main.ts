@@ -3,7 +3,7 @@ import World from "./Elements/World";
 
 const app: HTMLDivElement = document.querySelector<HTMLDivElement>("#app")!;
 
-let APP = null;
+let APP: World;
 
 window.addEventListener("DOMContentLoaded", () => {
   APP = new World();
